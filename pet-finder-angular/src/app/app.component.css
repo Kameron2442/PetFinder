@@ -1,0 +1,23 @@
+nav{
+    background: #6504b5;
+    height: 50px;
+    color: white;
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+    padding-top: 16px;
+    margin-bottom: 35px;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.max-width{
+    max-width: 800px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.some-margin{
+    margin:20px;
+}
+
