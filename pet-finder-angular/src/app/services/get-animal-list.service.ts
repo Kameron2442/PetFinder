@@ -11,15 +11,17 @@ import { AnimalQuick } from '../models/animal-quick'
 })
 export class GetAnimalListService {
 
-  readonly ROOT_URL = 'https://api.petfinder.com/v2/animals'
-  readonly petFinderKey = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI1aGo5SGM3b1pwbzQxS2RPbW1HTGxkVzZoMVBHcjVYcHZhZTloVU1Md2s4UzNrWFZuZCIsImp0aSI6IjdiOGZmMmI4ZjA3ODQ1ZjU1NzBjZDQyMjBkNzgyZTFjY2QyNzM3MjlhNTVmMDczMzNjNjU3ZjY1MjQyM2IxN2Q2MjJjMmJmMDNmYmMyOWQ3IiwiaWF0IjoxNTk1MTE5Mjc4LCJuYmYiOjE1OTUxMTkyNzgsImV4cCI6MTU5NTEyMjg3OCwic3ViIjoiIiwic2NvcGVzIjpbXX0.FI37EWeo5UDJ7SXH1F_NyltaNWXE_FUjIZX5SKp-uZPo27fr4W4KpMC_AMFB36uB8W0njBoeoI2Xy9f7ws2SdqPux-mBJKqBIrIMQc6V_CplyTARAKYgqko2C8az-X97ztV6i1-Yn1uBH599zz5VZOMTch_oadu9N7KI1ZNkd8-jB3BQzVHYnSFjIZdTM64hfh6o56Sf83qyB3FYPzdFBuXyFkggVH9936sh_Vv1HUUdy8tKnp1NwxAa0ZvZ32w-cQXO7M4cPQZuj667yJElrkWKt-qFbpJEsT_YqNYa_9l-PIvjUTkjy2jdrI5bGZPX9aEDuhwrf6dzbiakobnmiA'
+  // url for PetFinder API
+  readonly ROOT_URL = 'https://api.petfinder.com/v2/animals' 
+  // Bearer access_token
+  readonly petFinderKey = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI1aGo5SGM3b1pwbzQxS2RPbW1HTGxkVzZoMVBHcjVYcHZhZTloVU1Md2s4UzNrWFZuZCIsImp0aSI6IjI1ZTQ3OTdhYTVmNThhNWY5YmM4NDZmYTMxYjQxNDRiNDNhMGU5YjNiMWNhMDNhMWI3ZmEwNmI4NmU5MzYwOWQ4ZTk5ZWFhMTc0Y2RiODBlIiwiaWF0IjoxNTk1MTg4ODczLCJuYmYiOjE1OTUxODg4NzMsImV4cCI6MTU5NTE5MjQ3Mywic3ViIjoiIiwic2NvcGVzIjpbXX0.puoRyVeY56ekPy1gGUVGjqic86XDVpSNsb-5doeILVQ7vodyDD5v9YXCx6iW9Wa_0TaL828YNdlORJF2hkvqRhBC-kOBV6ax1STGTf6_VbuUjjUg3N_cL2akkCGPtuXE1hE0KYiHFhXOZn-1vlkMJpuvFtzN0JEdnAKA87Qs9nO9LqeEwPalT6-iTYwZcK15-LyT8spWgAuswYimpJoeINnHXoF_ljahsnOKAvrZhfueG51Z9yYbqoPhBJAJMdv0vE5Xeqbd0fjAePBF0rqxBspTchzzWifCZZ6dhp32r2btgVI2bXkRNX59Ug6CtgbmF_oLsPHVDjRRqtuSHxX_Kg'
 
   constructor(private http: HttpClient) { }
 
-  //returns an observable list of animals for the home component
-  getAnimals(): Observable<AnimalQuick[]>{
+  // returns an observable list of animals for the home component
+  getAnimals(loc: string, type:string, page:string): Observable<AnimalQuick[]>{
     let headers = new HttpHeaders().set('Authorization', `Bearer ${this.petFinderKey}`) //set has to be called on creation
-    return this.http.get<any>('https://api.petfinder.com/v2/animals?type=dog&page=1', { headers }).pipe(
+    return this.http.get<any>(`${this.ROOT_URL}?type=${type}&location=${loc}&page=${page}`, { headers }).pipe(
       map((json: any) => {
         let myAnimalList: AnimalQuick[] = [];
         let myAnimals: any[] = json.animals
@@ -28,7 +30,6 @@ export class GetAnimalListService {
             id: item.id,
             name: item.name,
             desc: item.description,
-            contact: item.contact.email,
             smlimg: item.photos[0]?.medium,
           }
           myAnimalList.push(currAnimal);
@@ -39,10 +40,10 @@ export class GetAnimalListService {
     );
   }
 
-  //gets a specific animal
+  // gets a specific animal for the pet detail component
   getAnimal(animalID: string): Observable<Animal>{
     let headers = new HttpHeaders().set('Authorization', `Bearer ${this.petFinderKey}`) //set has to be called on creation
-    return this.http.get<any>('https://api.petfinder.com/v2/animals/' + animalID, { headers }).pipe(
+    return this.http.get<any>(`${this.ROOT_URL}/${animalID}`, { headers }).pipe(
       map((json: any) => {
         let item = json.animal
         let currAnimal: Animal = {

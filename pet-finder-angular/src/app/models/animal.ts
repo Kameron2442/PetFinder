@@ -1,3 +1,4 @@
+// animal object with extra details
 export interface Animal {
     id: string,
     name: string,
