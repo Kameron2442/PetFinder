@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { PetComponent } from './components/pet/pet.component';
+import { PetDetailComponent } from './components/pet-detail/pet-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    PetComponent
+    PetComponent,
+    PetDetailComponent
   ],
   imports: [
     BrowserModule,

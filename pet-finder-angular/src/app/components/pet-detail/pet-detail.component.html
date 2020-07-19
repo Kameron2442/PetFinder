@@ -1,0 +1,11 @@
+<div *ngIf="animalDetail" class = 'animal-detail'>
+
+    <img class = 'pet-img-lrg' [src] = "animalDetail.lrgimg ? animalDetail.lrgimg : 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/48531967/1/?bust=1595115583&width=300' ">
+    <h1>{{animalDetail.name}}</h1>
+    <p>{{animalDetail.desc}}</p>
+    <p>Age: {{animalDetail.details.age}}</p>
+    <p>Gender: {{animalDetail.details.gender}}</p>
+    <p>Size: {{animalDetail.details.size}}</p>
+    <p>Contact: {{animalDetail.contact}}</p>
+
+</div>

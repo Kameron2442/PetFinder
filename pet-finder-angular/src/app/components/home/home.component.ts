@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {GetAnimalListService } from '../../services/get-animal-list.service'
-import { Animal } from '../../models/animal'
+import { AnimalQuick } from '../../models/animal-quick'
+
 
 
 @Component({
@@ -10,13 +11,13 @@ import { Animal } from '../../models/animal'
 })
 export class HomeComponent implements OnInit {
 
-  animalList: Animal[] //list of animals to be displayed
+  animalList: AnimalQuick[] //list of animals to be displayed
 
   constructor(private animalService: GetAnimalListService) { }
 
   ngOnInit(): void {
 
-    this.animalService.animals.subscribe(animals => {this.animalList = animals; console.log(animals);  });
+    this.animalService.getAnimals().subscribe(animals => {this.animalList = animals; console.log(animals);  });
 
   }
 

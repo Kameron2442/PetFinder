@@ -8,6 +8,7 @@ nav{
     padding-top: 16px;
     margin-bottom: 35px;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 
 .max-width{

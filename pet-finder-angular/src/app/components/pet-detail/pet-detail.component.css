@@ -1,30 +1,24 @@
-.pet-card{
+.animal-detail{
     background: white;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     margin: 20px;
-    height: 150px;
     text-decoration: none;
     color: #2e2e2e;
     padding: 15px;
-    cursor: pointer;
 }
 
-.pet-img{
+.pet-img-lrg{
     background: url('https://png.pngtree.com/thumb_back/fw800/background/20190828/pngtree-dark-vector-abstract-background-image_302715.jpg');
-    width: 150px;
-    height: 150px;
-    float: left;
+    width: 250px;
+    height: 250px;
     margin-right: 15px;
     border-radius: 12px;
     object-fit: cover;
-}
-
-.pet-title{
-    font-size: 30px;
-    margin: 0px;
-}
-
-.pet-desc{
+    margin-left: auto;
+    text-align: center;
+    margin-right: auto;
+    display: block;
+    border-radius: 15px;
     margin-top: 10px;
 }

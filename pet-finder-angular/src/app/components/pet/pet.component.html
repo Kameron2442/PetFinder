@@ -1,4 +1,4 @@
-<div class="pet-card">
+<div class="pet-card" [routerLink] = "['/animal/' + animalInfo.id]">
     <img class = 'pet-img' [src] = "animalInfo.smlimg ? animalInfo.smlimg : 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/48531967/1/?bust=1595115583&width=300' ">
     <p class = 'pet-title'>{{animalInfo.name}}</p>
     <p class = 'pet-desc'>{{animalInfo.desc}}</p>

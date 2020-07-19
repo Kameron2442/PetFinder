@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Animal } from 'src/app/models/animal';
+import { AnimalQuick } from '../../models/animal-quick'
 
 @Component({
   selector: 'app-pet',
@@ -8,7 +8,7 @@ import { Animal } from 'src/app/models/animal';
 })
 export class PetComponent implements OnInit {
 
-  @Input() animalInfo: Animal; // info on the animal
+  @Input() animalInfo: AnimalQuick; // info on the animal
 
   constructor() { }
 
