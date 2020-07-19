@@ -16,6 +16,7 @@
     float: left;
     margin-right: 15px;
     border-radius: 12px;
+    object-fit: cover;
 }
 
 .pet-title{
