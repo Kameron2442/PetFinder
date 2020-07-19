@@ -16,8 +16,8 @@ export class PetDetailComponent implements OnInit {
   constructor(private animalService: GetAnimalListService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    let id = this.route.snapshot.params.id;
-    this.animalService.getAnimal(id).subscribe(animal => {this.animalDetail = animal; console.log(animal);  });
+    let id = this.route.snapshot.params.id; // gets the id of the animal in the url
+    this.animalService.getAnimal(id).subscribe(animal => {this.animalDetail = animal; console.log(animal);  }); // gets the animal details
   }
 
 }
